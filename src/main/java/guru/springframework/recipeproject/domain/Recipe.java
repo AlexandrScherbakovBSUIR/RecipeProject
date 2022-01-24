@@ -1,6 +1,13 @@
 package guru.springframework.recipeproject.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Recipe {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String description;
     private Integer prepTime;
     private Integer cookTime;
@@ -9,7 +16,27 @@ public class Recipe {
     private String url;
     private String directions;
 
+    @Lob
     private Byte[] image;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private RecipeNote recipeNote;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public RecipeNote getRecipeNote() {
+        return recipeNote;
+    }
+
+    public void setRecipeNote(RecipeNote recipeNote) {
+        this.recipeNote = recipeNote;
+    }
 
     public String getDescription() {
         return description;
