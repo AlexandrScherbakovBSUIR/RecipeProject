@@ -15,7 +15,7 @@ public class IndexController {
 
     @RequestMapping({"","/","/index"})
     public String getIndexPage(){
-        System.out.println("category: "+ categoryRepository.findByDescription("Fast Food").get().getId());
+
 
 
         return "index";
