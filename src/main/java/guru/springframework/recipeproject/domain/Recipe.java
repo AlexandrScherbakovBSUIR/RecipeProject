@@ -51,6 +51,7 @@ public class Recipe {
     //TODO: add automated adding Recipe to RecipeNote
     public void setRecipeNote(RecipeNote recipeNote) {
         this.recipeNote = recipeNote;
+        recipeNote.setRecipe(this);
     }
 
     public String getDescription() {
@@ -124,6 +125,10 @@ public class Recipe {
     //TODO: add automated adding Recipe to Ingredient
     public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
+        for (Ingredient ingredient : this.ingredients) {
+            ingredient.setRecipe(this);
+            
+        }
     }
 
     public Difficulty getDifficulty() {

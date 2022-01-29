@@ -27,6 +27,7 @@ public class BootstrapRecipeFiller implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        //TODO: optimize this shit
         Ingredient avocado = new Ingredient();
         avocado.setDescription("avocado");
         avocado.setAmount(BigDecimal.valueOf(2));
@@ -149,24 +150,11 @@ public class BootstrapRecipeFiller implements CommandLineRunner {
         guacamole.setRecipeNote(recipeNoteForGuacamole);
         guacamole.setCategories(new HashSet<>());
         guacamole.getCategories().add(categoryRepository.findByDescription("Mexican"));
-        recipeNoteForGuacamole.setRecipe(guacamole);
 
-        avocado.setRecipe(guacamole);
-        salt.setRecipe(guacamole);
-        lemonJuice.setRecipe(guacamole);
-        redOnion.setRecipe(guacamole);
-        chili.setRecipe(guacamole);
-        cilantro.setRecipe(guacamole);
-        pepper.setRecipe(guacamole);
-        tomato.setRecipe(guacamole);
-        radish.setRecipe(guacamole);
-        tortilla.setRecipe(guacamole);
 
         guacamole.setIngredients(Set.of(avocado,salt,lemonJuice,redOnion,chili,
                 cilantro,pepper,tomato,radish,tortilla));
 
-
-        //recipeRepository.save(guacamole);
 
         Recipe tacos = new Recipe();
         tacos.setPrepTime(20);
@@ -182,17 +170,7 @@ public class BootstrapRecipeFiller implements CommandLineRunner {
         tacos.getCategories().add(categoryRepository.findByDescription("Mexican"));
         tacos.getCategories().add(categoryRepository.findByDescription("Fast Food"));
         tacos.setRecipeNote(recipeNoteForTacos);
-        recipeNoteForTacos.setRecipe(tacos);
 
-        powder.setRecipe(tacos);
-        oregano.setRecipe(tacos);
-        sugar.setRecipe(tacos);
-        salt2.setRecipe(tacos);
-        garlic.setRecipe(tacos);
-        zest.setRecipe(tacos);
-        orangeJuice.setRecipe(tacos);
-        oil.setRecipe(tacos);
-        chickenThighs.setRecipe(tacos);
         tacos.setIngredients(Set.of(powder,oregano,sugar,salt2,garlic,zest,orangeJuice,oil,chickenThighs));
 
 
