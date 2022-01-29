@@ -1,8 +1,14 @@
 package guru.springframework.recipeproject.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Set;
 
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 public class Recipe {
 
@@ -36,6 +42,7 @@ public class Recipe {
     private Set<Category> categories;
 
 
+/*
     public Long getId() {
         return id;
     }
@@ -47,13 +54,22 @@ public class Recipe {
     public RecipeNote getRecipeNote() {
         return recipeNote;
     }
+*/
 
-    //TODO: add automated adding Recipe to RecipeNote
+
     public void setRecipeNote(RecipeNote recipeNote) {
         this.recipeNote = recipeNote;
         recipeNote.setRecipe(this);
     }
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+        for (Ingredient ingredient : this.ingredients) {
+            ingredient.setRecipe(this);
 
+        }
+    }
+
+/*
     public String getDescription() {
         return description;
     }
@@ -121,16 +137,11 @@ public class Recipe {
     public Set<Ingredient> getIngredients() {
         return ingredients;
     }
+*/
 
-    //TODO: add automated adding Recipe to Ingredient
-    public void setIngredients(Set<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-        for (Ingredient ingredient : this.ingredients) {
-            ingredient.setRecipe(this);
-            
-        }
-    }
 
+
+/*
     public Difficulty getDifficulty() {
         return difficulty;
     }
@@ -145,5 +156,5 @@ public class Recipe {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
-    }
+    }*/
 }

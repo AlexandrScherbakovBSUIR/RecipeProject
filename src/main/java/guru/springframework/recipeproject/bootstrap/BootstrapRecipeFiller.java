@@ -5,6 +5,7 @@ import guru.springframework.recipeproject.repositories.CategoryRepository;
 import guru.springframework.recipeproject.repositories.RecipeRepository;
 import guru.springframework.recipeproject.repositories.UnitOfMeasureRepository;
 import guru.springframework.recipeproject.services.RecipeServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,9 +13,10 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.util.*;
 
+@Slf4j
 @Component
 public class BootstrapRecipeFiller implements CommandLineRunner {
-
+    //todo: add some debug loggins
     @Autowired
     private RecipeRepository recipeRepository;
     @Autowired

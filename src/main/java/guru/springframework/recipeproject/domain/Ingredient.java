@@ -1,8 +1,14 @@
 package guru.springframework.recipeproject.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 public class Ingredient {
 
@@ -18,7 +24,7 @@ public class Ingredient {
     @OneToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure unitOfMeasure;
 
-    public Long getId() {
+/*    public Long getId() {
         return id;
     }
 
@@ -56,5 +62,5 @@ public class Ingredient {
 
     public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
         this.unitOfMeasure = unitOfMeasure;
-    }
+    }*/
 }
