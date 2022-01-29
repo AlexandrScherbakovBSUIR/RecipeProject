@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 public class RecipeController {
-    //todo: add some debug loggins
+    //TODO: add some debug loggins
 
     @Autowired
     private RecipeService recipeService;
@@ -18,6 +18,7 @@ public class RecipeController {
     @RequestMapping("/recipes")
     public String getListOfRecipes(Model model){
 
+        log.debug("Loading the list of recipes...");
         model.addAttribute("recipes",recipeService.findAllRecipes());
         return "recipes/listOfRecipes";
     }

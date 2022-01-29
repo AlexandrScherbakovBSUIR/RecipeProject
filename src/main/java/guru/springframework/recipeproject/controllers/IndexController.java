@@ -19,8 +19,7 @@ public class IndexController {
     @RequestMapping({"","/","/index"})
     public String getIndexPage(){
 
-
-
+        log.debug("Loading the index page...");
         return "index";
     }
 
