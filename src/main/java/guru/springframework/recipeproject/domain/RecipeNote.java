@@ -1,7 +1,13 @@
 package guru.springframework.recipeproject.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 public class RecipeNote {
 
@@ -15,7 +21,7 @@ public class RecipeNote {
     @Lob
     private String recipeNote;
 
-    public Long getId() {
+/*    public Long getId() {
         return id;
     }
 
@@ -37,5 +43,5 @@ public class RecipeNote {
 
     public void setRecipeNote(String resiceNote) {
         this.recipeNote = resiceNote;
-    }
+    }*/
 }

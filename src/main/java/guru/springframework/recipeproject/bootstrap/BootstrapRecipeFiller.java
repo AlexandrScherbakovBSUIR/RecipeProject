@@ -5,16 +5,19 @@ import guru.springframework.recipeproject.repositories.CategoryRepository;
 import guru.springframework.recipeproject.repositories.RecipeRepository;
 import guru.springframework.recipeproject.repositories.UnitOfMeasureRepository;
 import guru.springframework.recipeproject.services.RecipeServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.*;
 
+@Slf4j
 @Component
 public class BootstrapRecipeFiller implements CommandLineRunner {
-
+    //todo: add some debug loggins
     @Autowired
     private RecipeRepository recipeRepository;
     @Autowired
@@ -27,7 +30,9 @@ public class BootstrapRecipeFiller implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        //TODO: optimize this shit
+         //TODO: optimize this shit
+        log.debug("Loading data...");
+
         Ingredient avocado = new Ingredient();
         avocado.setDescription("avocado");
         avocado.setAmount(BigDecimal.valueOf(2));
@@ -148,7 +153,7 @@ public class BootstrapRecipeFiller implements CommandLineRunner {
         guacamole.setServing(4);
         guacamole.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
         guacamole.setRecipeNote(recipeNoteForGuacamole);
-        guacamole.setCategories(new HashSet<>());
+        //guacamole.setCategories(new HashSet<>());
         guacamole.getCategories().add(categoryRepository.findByDescription("Mexican"));
 
 
@@ -166,7 +171,7 @@ public class BootstrapRecipeFiller implements CommandLineRunner {
         tacos.setDifficulty(Difficulty.MODERATE);
         tacos.setServing(6);
         tacos.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
-        tacos.setCategories(new HashSet<>());
+        //tacos.setCategories(new HashSet<>());
         tacos.getCategories().add(categoryRepository.findByDescription("Mexican"));
         tacos.getCategories().add(categoryRepository.findByDescription("Fast Food"));
         tacos.setRecipeNote(recipeNoteForTacos);
