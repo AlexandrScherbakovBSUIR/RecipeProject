@@ -8,6 +8,7 @@ class RecipeProjectApplicationTests {
 
     @Test
     void contextLoads() {
+        
     }
 
 }
