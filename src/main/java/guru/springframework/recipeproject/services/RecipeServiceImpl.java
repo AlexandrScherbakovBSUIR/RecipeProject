@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class RecipeServiceImpl implements RecipeService{
 
-    @Autowired
+
     private RecipeRepository recipeRepository;
+
+    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+        this.recipeRepository = recipeRepository;
+    }
 
     public List<Recipe> saveAllRecipes(List<Recipe> recipes){
 
