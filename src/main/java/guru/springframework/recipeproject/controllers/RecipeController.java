@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RecipeController {
     //TODO: add some debug loggins
 
-    @Autowired
-    private RecipeService recipeService;
+
+    private  RecipeService recipeService;
+
+    public RecipeController(RecipeService recipeService) {
+        this.recipeService = recipeService;
+    }
 
     @RequestMapping("/recipes")
     public String getListOfRecipes(Model model){
