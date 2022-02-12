@@ -32,21 +32,22 @@ class RecipeServiceImplTest {
 
     @Test
     void saveAllRecipes() {
+
+    }
+
+    @Test
+    void findAllRecipes() {
         Recipe recipe = new Recipe();
         List recipeData = new ArrayList();
         recipeData.add(recipe);
 
         when(recipeService.findAllRecipes()).thenReturn(recipeData);
 
-      //  when(recipeRepository.findAll()).thenReturn(recipeData);
+        //  when(recipeRepository.findAll()).thenReturn(recipeData);
 
         List<Recipe> recipes =  recipeService.findAllRecipes();
 
         assertEquals(recipes.size(),1);
         verify(recipeRepository,times(1)).findAll();
-    }
-
-    @Test
-    void findAllRecipes() {
     }
 }
