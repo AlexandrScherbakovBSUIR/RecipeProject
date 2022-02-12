@@ -19,7 +19,7 @@ class CategoryTest {
     @Test
     void getId() {
 
-        assertEquals(3L,category.getId());
+        assertEquals(4L,category.getId());
     }
 
     @Test
