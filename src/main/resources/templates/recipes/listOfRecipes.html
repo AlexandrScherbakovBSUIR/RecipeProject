@@ -33,6 +33,7 @@
                                     <td th:text="${recipe.id}"></td>
                                     <td th:text="${recipe.description}" ></td>
                                     <td th:text="${recipe.url}"></td>
+                                    <td ><a th:href="@{/Recipe}">View</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -41,6 +42,6 @@
             </div>
         </div>
     </div>
-    <a th:href="@{/}">Go back to main</a>>
+    <a th:href="@{/}">Go back to main</a>
 </body>
 </html>

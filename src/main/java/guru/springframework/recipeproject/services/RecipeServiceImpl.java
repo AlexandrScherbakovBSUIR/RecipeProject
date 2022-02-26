@@ -2,10 +2,10 @@ package guru.springframework.recipeproject.services;
 
 import guru.springframework.recipeproject.domain.Recipe;
 import guru.springframework.recipeproject.repositories.RecipeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RecipeServiceImpl implements RecipeService{
@@ -30,6 +30,12 @@ public class RecipeServiceImpl implements RecipeService{
         recipeRepository.findAll();
         return response;
 
+    }
+
+    @Override
+    public Optional<Recipe> findById(Long id) {
+        Optional<Recipe> response = recipeRepository.findById(id);
+        return response;
     }
 
 

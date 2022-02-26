@@ -26,4 +26,12 @@ public class RecipeController {
         model.addAttribute("recipes",recipeService.findAllRecipes());
         return "recipes/listOfRecipes";
     }
+//TODO: find out how to send parametr by HTML & JS to Spring Controller
+    @RequestMapping("/recipe")
+    public String getConcreteRecipe(Model model,Long id){
+
+        model.addAttribute("recipe",recipeService.findById(id)  );
+
+        return "Recipe";
+    }
 }
