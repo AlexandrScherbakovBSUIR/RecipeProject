@@ -33,9 +33,9 @@ public class RecipeServiceImpl implements RecipeService{
     }
 
     @Override
-    public Optional<Recipe> findById(Long id) {
+    public Recipe findById(Long id) {
         Optional<Recipe> response = recipeRepository.findById(id);
-        return response;
+        return response.get();
     }
 
 
