@@ -1,9 +1,10 @@
 package guru.springframework.recipeproject.controllers;
 
 import guru.springframework.recipeproject.domain.Recipe;
+import guru.springframework.recipeproject.services.CategoryService;
 import guru.springframework.recipeproject.services.RecipeService;
+import guru.springframework.recipeproject.utils.CasterImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +17,13 @@ public class RecipeController {
     //TODO: add some debug loggins
 
 
-    private  RecipeService recipeService;
+    private final RecipeService recipeService;
+    private final CategoryService categoryService;
 
-    public RecipeController(RecipeService recipeService) {
+
+    public RecipeController(RecipeService recipeService, CategoryService categoryService) {
         this.recipeService = recipeService;
+        this.categoryService = categoryService;
     }
 
     @RequestMapping("/recipes")
@@ -33,7 +37,10 @@ public class RecipeController {
     @RequestMapping("/Recipe")
     public String getConcreteRecipeByParameter(@RequestParam(value = "id", required = false) Long id, Model model){
 
-        model.addAttribute("recipe",recipeService.findById(id)  );
+        Recipe recipe = recipeService.findById(id);
+        model.addAttribute("recipe",recipe  );
+        model.addAttribute("categories",
+                categoryService.findAllCategoriesById(new CasterImpl().takeCategoryIdFrom(recipe.getCategories())));
 
         return "recipes/Recipe";
     }
@@ -41,7 +48,10 @@ public class RecipeController {
     @RequestMapping("/Recipe/{id}")
     public String getConcreteRecipeByPathVariable(@PathVariable String id, Model model){
 
-        model.addAttribute("recipe",recipeService.findById(Long.valueOf(id)));
+        Recipe recipe = recipeService.findById(Long.valueOf(id));
+        model.addAttribute("recipe",recipe);
+        model.addAttribute("categories",
+                categoryService.findAllCategoriesById(new CasterImpl().takeCategoryIdFrom(recipe.getCategories())));
 
         return "recipes/Recipe";
     }
