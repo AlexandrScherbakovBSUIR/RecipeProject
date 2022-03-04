@@ -34,8 +34,7 @@
                                     <td th:text="${recipe.description}" ></td>
                                     <td th:text="${recipe.url}"></td>
                                     <td @thymeleaf id="recipe" type="guru.springframework.recipeproject.domain.Recipe">
-                                    <td><a href="#"></a>view#</td>
-                                    <td><a href="#" th:href="@{'/Recipe/'+${recipe.id}}">view</a></td>
+                                    <td><a  th:href="@{'/Recipe/'+${recipe.id}}">view</a></td>
                                 </tr>
                             </table>
                         </div>

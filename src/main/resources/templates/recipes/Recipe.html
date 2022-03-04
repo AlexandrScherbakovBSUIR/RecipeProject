@@ -31,7 +31,7 @@
                                 </tr>
                                 <tr>
                                     <th>Description</th>
-                                    <td th:text="${recipe.description}" ></td>
+                                    <td th:text="${note.recipeNote}" ></td>
                                 </tr>
                                 <tr>
                                     <th>Link</th>
@@ -48,6 +48,15 @@
                                 <tr>
                                     <th>serving</th>
                                     <td th:text="${recipe.serving}" ></td>
+                                </tr>
+                                <tr>
+                                    <th>Ingredients</th>
+                                    <tr th:each="ingredient:${ingredients}" >
+                                        <td th:text="${ingredient.id}" ></td>
+                                        <td th:text="${ingredient.description}" ></td>
+                                        <td th:text="${ingredient.amount}" ></td>
+
+                                    </tr>
                                 </tr>
                             </table>
                         </div>
