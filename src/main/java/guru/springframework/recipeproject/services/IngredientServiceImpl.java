@@ -2,6 +2,7 @@ package guru.springframework.recipeproject.services;
 
 import guru.springframework.recipeproject.domain.Ingredient;
 import guru.springframework.recipeproject.repositories.IngredientRepository;
+import guru.springframework.recipeproject.repositories.UnitOfMeasureRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.Optional;
 public class IngredientServiceImpl implements IngredientService {
 
     private final IngredientRepository ingredientRepository;
+    private final UnitOfMeasureRepository unitOfMeasureRepository;
 
-    public IngredientServiceImpl(IngredientRepository ingredientRepository) {
+    public IngredientServiceImpl(IngredientRepository ingredientRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
         this.ingredientRepository = ingredientRepository;
+        this.unitOfMeasureRepository = unitOfMeasureRepository;
     }
 
     @Override
@@ -29,5 +32,6 @@ public class IngredientServiceImpl implements IngredientService {
 
         return response;
     }
+
 
 }
