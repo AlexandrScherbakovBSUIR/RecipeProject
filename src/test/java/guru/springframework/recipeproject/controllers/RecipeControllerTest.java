@@ -34,6 +34,8 @@ class RecipeControllerTest {
     @Mock
     RecipeServiceImpl recipeService;
     RecipeController recipeController;
+    @Mock
+    CategoryService categoryService;
 
     @BeforeEach
     void setUp() {
