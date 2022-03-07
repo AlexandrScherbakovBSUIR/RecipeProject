@@ -29,6 +29,9 @@ public class IngredientServiceImpl implements IngredientService {
     public List<Ingredient> findAllById(Iterable<Long> idList) {
 
         List<Ingredient> response = (List<Ingredient>) ingredientRepository.findAllById(idList);
+        for (Ingredient ingredient: response) {
+            System.out.println(ingredient.getUnitOfMeasure());
+        }
 
         return response;
     }
