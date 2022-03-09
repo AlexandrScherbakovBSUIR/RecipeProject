@@ -18,7 +18,7 @@
                 <div class="panel panel-primary">
 
                     <div class="panel-heading" >
-                        <h1 class="panel-title">My Recipes!</h1>
+                        <h1 class="panel-title" >My Recipes!</h1>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">
@@ -43,6 +43,8 @@
             </div>
         </div>
     </div>
-    <a th:href="@{/}">Go back to main</a>
+    <div class="justify-content-center">
+    <a th:href="@{/}" >Go back to main</a>
+    </div>
 </body>
 </html>

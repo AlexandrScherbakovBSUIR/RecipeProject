@@ -1,0 +1,9 @@
+.tableCounter {
+  border-spacing: 10px;
+  counter-reset: numrows;
+}
+
+.trC::before {
+  counter-increment: numrows;
+  content: counter(numrows);
+}
