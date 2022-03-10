@@ -2,7 +2,6 @@ package guru.springframework.recipeproject.controllers;
 
 import guru.springframework.recipeproject.domain.Recipe;
 import guru.springframework.recipeproject.repositories.RecipeRepository;
-import guru.springframework.recipeproject.services.RecipeService;
 import guru.springframework.recipeproject.services.RecipeServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
@@ -34,8 +32,7 @@ class RecipeControllerTest {
     @Mock
     RecipeServiceImpl recipeService;
     RecipeController recipeController;
-    @Mock
-    CategoryService categoryService;
+
 
     @BeforeEach
     void setUp() {
