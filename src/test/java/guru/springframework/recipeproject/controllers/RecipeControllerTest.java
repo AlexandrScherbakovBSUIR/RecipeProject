@@ -2,11 +2,7 @@ package guru.springframework.recipeproject.controllers;
 
 import guru.springframework.recipeproject.domain.Recipe;
 import guru.springframework.recipeproject.repositories.RecipeRepository;
-import guru.springframework.recipeproject.services.CategoryService;
-import guru.springframework.recipeproject.services.IngredientService;
-import guru.springframework.recipeproject.services.RecipeNoteService;
 import guru.springframework.recipeproject.services.RecipeServiceImpl;
-import guru.springframework.recipeproject.utils.CasterImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -36,20 +32,13 @@ class RecipeControllerTest {
     @Mock
     RecipeServiceImpl recipeService;
     RecipeController recipeController;
-    @Mock
-    CategoryService categoryService;
-    @Mock
-    RecipeNoteService recipeNoteService;
-    @Mock
-    IngredientService ingredientService;
-    @Mock
-    CasterImpl caster;
+
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
         //recipeService = new RecipeServiceImpl(recipeRepository);
-        recipeController = new RecipeController(recipeService, categoryService, recipeNoteService, ingredientService, caster);
+        recipeController = new RecipeController(recipeService);
         System.out.println(recipeService.toString()+"1");
      //   recipeService = new RecipeServiceImpl(recipeRepository);
         System.out.println(recipeService.toString());

@@ -25,14 +25,14 @@
                         <div class="table-responsive">
                             <table class="table table-hover ">
                                 <thead class="thead-inverse">
-                                <tr th:each="category:${categories}" >
+                                <tr th:each="category:${recipe.categories}" >
                                     <th>category</th>
                                     <td th:text="${category.description}" ></td>
 
                                 </tr>
                                 <tr>
                                     <th>Description</th>
-                                    <td th:text="${note.recipeNote}" ></td>
+                                    <td th:text="${recipe.recipeNote.recipeNote}" ></td>
                                 </tr>
                                 <tr>
                                     <th>Link</th>
