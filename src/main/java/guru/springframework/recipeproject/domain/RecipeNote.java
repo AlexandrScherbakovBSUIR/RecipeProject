@@ -1,13 +1,7 @@
 package guru.springframework.recipeproject.domain;
 
-import lombok.*;
-
 import javax.persistence.*;
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
 @Entity
 public class RecipeNote {
 
@@ -21,27 +15,35 @@ public class RecipeNote {
     @Lob
     private String recipeNote;
 
-/*    public Long getId() {
-        return id;
+
+    public RecipeNote() {
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public Recipe getRecipe() {
+        return this.recipe;
+    }
+
+    public String getRecipeNote() {
+        return this.recipeNote;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
 
-    public String getRecipeNote() {
-        return recipeNote;
+    public void setRecipeNote(String recipeNote) {
+        this.recipeNote = recipeNote;
     }
 
-    public void setRecipeNote(String resiceNote) {
-        this.recipeNote = resiceNote;
-    }*/
+    public String toString() {
+        return "RecipeNote(id=" + this.getId() + ", recipe=" + this.getRecipe() + ", recipeNote=" + this.getRecipeNote() + ")";
+    }
 }
