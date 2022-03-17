@@ -14,13 +14,10 @@ public class RecipeController {
     //TODO: add some debug loggins
 
 
-    private final RecipeService recipeService;
-
-
+    private  RecipeService recipeService;
 
     public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
-
     }
 
     @RequestMapping("/recipes")
