@@ -1,7 +1,6 @@
 package guru.springframework.recipeproject.commands;
 
 import guru.springframework.recipeproject.domain.Difficulty;
-import guru.springframework.recipeproject.domain.RecipeNote;
 
 import java.util.Set;
 
@@ -15,7 +14,7 @@ public class RecipeCommand {
     private String url;
     private String directions;
     private Difficulty difficulty;
-    private NoteCommand recipeNote;
+    private RecipeNoteCommand recipeNote;
     private Set<IngredientCommand> ingredients;
     private Set<CategoryCommand> categories;
 

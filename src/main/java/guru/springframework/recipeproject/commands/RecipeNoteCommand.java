@@ -1,6 +1,6 @@
 package guru.springframework.recipeproject.commands;
 
-public class NoteCommand {
+public class RecipeNoteCommand {
     private Long id;
     private String recipeNote;
 
