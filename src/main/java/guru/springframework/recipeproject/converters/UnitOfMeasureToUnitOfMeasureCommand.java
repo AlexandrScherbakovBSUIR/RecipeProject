@@ -5,7 +5,9 @@ import guru.springframework.recipeproject.domain.UnitOfMeasure;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UnitOfMeasureToUnitOfMeasureCommand implements Converter<UnitOfMeasure, UnitOfMeasureCommand> {
 
     @Synchronized
@@ -16,9 +18,9 @@ public class UnitOfMeasureToUnitOfMeasureCommand implements Converter<UnitOfMeas
             return null;
         }
         //TODO: UOMC should be final why?
-        UnitOfMeasureCommand UOMC = new UnitOfMeasureCommand();
-        UOMC.setId(source.getId());
-        UOMC.setDescription(source.getDescription());
-        return UOMC;
+        UnitOfMeasureCommand unitOfMeasureCommand = new UnitOfMeasureCommand();
+        unitOfMeasureCommand.setId(source.getId());
+        unitOfMeasureCommand.setDescription(source.getDescription());
+        return unitOfMeasureCommand;
     }
 }
