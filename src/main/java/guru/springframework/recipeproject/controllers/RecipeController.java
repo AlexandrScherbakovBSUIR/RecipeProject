@@ -28,19 +28,19 @@ public class RecipeController {
         return "recipes/listOfRecipes";
     }
     /*by id*/
-    @RequestMapping("/Recipe")
+    @RequestMapping("/recipe")
     public String getConcreteRecipeByParameter(@RequestParam(value = "id", required = false) Long id, Model model){
 
         model.addAttribute("recipe",recipeService.findById(Long.valueOf(id)));
 
-        return "recipes/Recipe";
+        return "recipes/recipe";
     }
     /*view*/
-    @RequestMapping("/Recipe/{id}")
+    @RequestMapping("/recipe/{id}")
     public String getConcreteRecipeByPathVariable(@PathVariable String id, Model model){
 
         model.addAttribute("recipe",recipeService.findById(Long.valueOf(id)));
 
-        return "recipes/Recipe";
+        return "recipes/recipe";
     }
 }
