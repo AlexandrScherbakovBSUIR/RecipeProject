@@ -1,12 +1,12 @@
 package guru.springframework.recipeproject.controllers;
 
+import guru.springframework.recipeproject.domain.Difficulty;
+import guru.springframework.recipeproject.domain.Recipe;
 import guru.springframework.recipeproject.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
@@ -42,5 +42,22 @@ public class RecipeController {
         model.addAttribute("recipe",recipeService.findById(Long.valueOf(id)));
 
         return "recipes/recipe";
+    }
+
+    @GetMapping("/newRecipe")
+    public String getNewRecipeForm(Model model){
+        Recipe recipe = new Recipe();
+        model.addAttribute("recipe",recipe);
+        model.addAttribute("listOfDifficulty",Difficulty.values());
+
+        return "recipes/newRecipe";
+    }
+
+    @PostMapping("/newRecipe")
+    public String postNewRecipe(@ModelAttribute("recipe") Recipe recipe){
+        recipeService.saveRecipe(recipe);
+
+        return "recipes/listOfRecipes";
+
     }
 }
