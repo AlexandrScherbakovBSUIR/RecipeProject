@@ -22,42 +22,52 @@
                     <h1 class="panel-title" text="Create recipe form"></h1>
                 </div>
                 <div class="panel-body">
-                    <form action="#" th:action="@{/newRecipe}" method="post" th:object="${recipe}">
+                    <form action="#" th:action="@{/newRecipe}" method="post" th:object="${recipeCommand}">
                         <div class="form-group">
                             <label for="Description">Recipe description</label>
-                            <input type="text" class="form-control" id="Description" th:field="*{recipe.Description}"  placeholder="A cool recipe name">
+                            <input type="text" class="form-control" id="Description" th:field="*{description}"  placeholder="A cool recipe name">
                             <small id="RecipeHelp" class="form-text text-muted">input the name of a recipe</small>
                         </div>
                         <div class="form-group">
                             <label for="Direction">Recipe description</label>
-                            <input type="text" class="form-control" id="Direction"  th:field="*{recipe.Direction}" placeholder="A cool recipe name">
+                            <input type="text" class="form-control" id="Direction"  th:field="*{directions}" placeholder="A cool recipe name">
                             <small id="DirectionHelp" class="form-text text-muted">input direction</small>
                         </div>
                         <div class="form-group">
                             <label for="PrepTime">Preparing time</label>
-                            <input type="number" class="form-control" id="PrepTime" th:field="*{recipe.PrepTime}"  placeholder="Time in minutes">
+                            <input type="number" class="form-control" id="PrepTime" th:field="*{prepTime}"  placeholder="Time in minutes">
                             <small id="prepTimeHelp" class="form-text text-muted">input preparation time</small>
                         </div>
                         <div class="form-group">
                             <label for="CookTime">Preparing time</label>
-                            <input type="number" class="form-control" id="CookTime" th:field="*{recipe.CookTime}"  placeholder="Time in minutes">
+                            <input type="number" class="form-control" id="CookTime" th:field="*{cookTime}"  placeholder="Time in minutes">
                             <small id="CookTimeHelp" class="form-text text-muted">input cook time</small>
                         </div>
                         <div class="form-group">
                             <label for="Serving">Preparing time</label>
-                            <input type="number" class="form-control" id="Serving" th:field="*{recipe.Serving}"  placeholder="Time in minutes">
+                            <input type="number" class="form-control" id="Serving" th:field="*{serving}"  placeholder="Time in minutes">
                             <small id="ServingHelp" class="form-text text-muted">input for how many people</small>
                         </div>
                         <div class="form-group">
                             <label for="Difficulty">Difficulty</label>
-                        <select id="Difficulty" th:field="*{recipe.Difficulty}">
+                        <select id="Difficulty" th:field="*{difficulty}">
                             <option th:each="p : ${listOfDifficulty}" th:value="${p}" th:text="${p}" />
                         </select>
                         </div>
                         <div class="form-group">
                             <label for="Url">Url</label>
-                            <input type="number" class="form-control" id="Url"  placeholder="Time in minutes">
+                            <input type="url" class="form-control" id="Url" th:field="*{url}" placeholder="Time in minutes">
                             <small id="UrlHelp" class="form-text text-muted">input Url</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="Source">Url</label>
+                            <input type="text" class="form-control" id="Source" th:field="*{source}"  placeholder="Time in minutes">
+                            <small id="SourceHelp" class="form-text text-muted">input source</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipeNoteCommand">Url</label>
+                            <input type="number" class="form-control" id="recipeNoteCommand" th:field="*{recipeNoteCommand.recipeNote}"  placeholder="Time in minutes">
+                            <small id="recipeNoteCommandHelp" class="form-text text-muted">input recipeNoteCommand</small>
                         </div>
 
                         <button type="submit" th:href="@{/newRecipe}" class="btn btn-primary mb-2" style="margin-top: 20px">Create Recipe</button>

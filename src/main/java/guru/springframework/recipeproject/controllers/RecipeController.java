@@ -1,5 +1,7 @@
 package guru.springframework.recipeproject.controllers;
 
+import guru.springframework.recipeproject.commands.RecipeCommand;
+import guru.springframework.recipeproject.converters.RecipeCommandToRecipe;
 import guru.springframework.recipeproject.domain.Difficulty;
 import guru.springframework.recipeproject.domain.Recipe;
 import guru.springframework.recipeproject.services.RecipeService;
@@ -15,9 +17,11 @@ public class RecipeController {
 
 
     private  RecipeService recipeService;
+    private final RecipeCommandToRecipe recipeCommandToRecipe;
 
-    public RecipeController(RecipeService recipeService) {
+    public RecipeController(RecipeService recipeService, RecipeCommandToRecipe recipeCommandToRecipe) {
         this.recipeService = recipeService;
+        this.recipeCommandToRecipe = recipeCommandToRecipe;
     }
 
     @RequestMapping("/recipes")
@@ -46,16 +50,16 @@ public class RecipeController {
 
     @GetMapping("/newRecipe")
     public String getNewRecipeForm(Model model){
-        Recipe recipe = new Recipe();
-        model.addAttribute("recipe",recipe);
+        RecipeCommand recipeCommand = new RecipeCommand();
+        model.addAttribute("recipeCommand",recipeCommand);
         model.addAttribute("listOfDifficulty",Difficulty.values());
 
         return "recipes/newRecipe";
     }
 
     @PostMapping("/newRecipe")
-    public String postNewRecipe(@ModelAttribute("recipe") Recipe recipe){
-        recipeService.saveRecipe(recipe);
+    public String postNewRecipe(@ModelAttribute("recipeCommand") RecipeCommand recipeCommand){
+        recipeService.saveRecipe(recipeCommandToRecipe.convert(recipeCommand));
 
         return "recipes/listOfRecipes";
 

@@ -14,7 +14,7 @@ public class RecipeCommand {
     private String url;
     private String directions;
     private Difficulty difficulty;
-    private RecipeNoteCommand recipeNote;
+    private RecipeNoteCommand recipeNoteCommand;
     private Set<IngredientCommand> ingredients;
     private Set<CategoryCommand> categories;
 
@@ -93,12 +93,12 @@ public class RecipeCommand {
         this.difficulty = difficulty;
     }
 
-    public RecipeNoteCommand getRecipeNote() {
-        return recipeNote;
+    public RecipeNoteCommand getRecipeNoteCommand() {
+        return recipeNoteCommand;
     }
 
-    public void setRecipeNote(RecipeNoteCommand recipeNote) {
-        this.recipeNote = recipeNote;
+    public void setRecipeNoteCommand(RecipeNoteCommand recipeNoteCommand) {
+        this.recipeNoteCommand = recipeNoteCommand;
     }
 
     public Set<IngredientCommand> getIngredients() {
