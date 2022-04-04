@@ -36,17 +36,17 @@ class RecipeControllerTest {
     @Mock
     RecipeCommandToRecipe recipeCommandToRecipe;
 
-    @BeforeEach
+/*    @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
         //recipeService = new RecipeServiceImpl(recipeRepository);
-        recipeController = new RecipeController(recipeService, recipeCommandToRecipe);
+        recipeController = new RecipeController(recipeService, recipeCommandToRecipe, unitOfMeasureRepository);
         System.out.println(recipeService.toString()+"1");
      //   recipeService = new RecipeServiceImpl(recipeRepository);
         System.out.println(recipeService.toString());
      //   model.addAttribute("recipes",recipeService.findAllRecipes());
 
-    }
+    }*/
 
     @Test
     void testMockMVC() throws Exception {

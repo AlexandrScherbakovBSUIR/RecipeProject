@@ -2,6 +2,7 @@ package guru.springframework.recipeproject.commands;
 
 import guru.springframework.recipeproject.domain.Difficulty;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class RecipeCommand {
@@ -15,8 +16,8 @@ public class RecipeCommand {
     private String directions;
     private Difficulty difficulty;
     private RecipeNoteCommand recipeNoteCommand;
-    private Set<IngredientCommand> ingredients;
-    private Set<CategoryCommand> categories;
+    private Set<IngredientCommand> ingredients = new HashSet<>();
+    private Set<CategoryCommand> categories = new HashSet<>();
 
     public RecipeCommand() {
     }

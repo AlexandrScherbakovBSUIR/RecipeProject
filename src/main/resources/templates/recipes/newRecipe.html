@@ -29,7 +29,7 @@
                             <small id="RecipeHelp" class="form-text text-muted">input the name of a recipe</small>
                         </div>
                         <div class="form-group">
-                            <label for="Direction">Recipe description</label>
+                            <label for="Direction">Recipe Direction</label>
                             <input type="text" class="form-control" id="Direction"  th:field="*{directions}" placeholder="A cool recipe name">
                             <small id="DirectionHelp" class="form-text text-muted">input direction</small>
                         </div>
@@ -60,15 +60,25 @@
                             <small id="UrlHelp" class="form-text text-muted">input Url</small>
                         </div>
                         <div class="form-group">
-                            <label for="Source">Url</label>
+                            <label for="Source">Source</label>
                             <input type="text" class="form-control" id="Source" th:field="*{source}"  placeholder="Time in minutes">
                             <small id="SourceHelp" class="form-text text-muted">input source</small>
                         </div>
                         <div class="form-group">
-                            <label for="recipeNoteCommand">Url</label>
-                            <input type="number" class="form-control" id="recipeNoteCommand" th:field="*{recipeNoteCommand.recipeNote}"  placeholder="Time in minutes">
+                            <label for="recipeNoteCommand"> Recipe Note</label>
+                            <input type="text" class="form-control" id="recipeNoteCommand" th:field="*{recipeNoteCommand.recipeNote}"  placeholder="Time in minutes">
                             <small id="recipeNoteCommandHelp" class="form-text text-muted">input recipeNoteCommand</small>
                         </div>
+<!--                        <div class="form-group">
+                            <label for="ingredients">Url</label>
+                            <input type="text" class="form-control" id="ingredients" th:field="*{ingredients}"  placeholder="Time in minutes">
+                            <small id="recipeNoteCommandHelp" class="form-text text-muted">input recipeNoteCommand</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipeNoteCommand">Url</label>
+                            <input type="text" class="form-control" id="recipeNoteCommand" th:field="*{recipeNoteCommand.recipeNote}"  placeholder="Time in minutes">
+                            <small id="recipeNoteCommandHelp" class="form-text text-muted">input recipeNoteCommand</small>
+                        </div>-->
 
                         <button type="submit" th:href="@{/newRecipe}" class="btn btn-primary mb-2" style="margin-top: 20px">Create Recipe</button>
                     </form>

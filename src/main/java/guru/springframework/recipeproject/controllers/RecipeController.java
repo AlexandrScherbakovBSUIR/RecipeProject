@@ -1,14 +1,22 @@
 package guru.springframework.recipeproject.controllers;
 
+import guru.springframework.recipeproject.commands.CategoryCommand;
+import guru.springframework.recipeproject.commands.IngredientCommand;
 import guru.springframework.recipeproject.commands.RecipeCommand;
+import guru.springframework.recipeproject.converters.CategoryToCategoryCommand;
 import guru.springframework.recipeproject.converters.RecipeCommandToRecipe;
+import guru.springframework.recipeproject.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import guru.springframework.recipeproject.domain.Difficulty;
-import guru.springframework.recipeproject.domain.Recipe;
+import guru.springframework.recipeproject.repositories.CategoryRepository;
+import guru.springframework.recipeproject.repositories.UnitOfMeasureRepository;
 import guru.springframework.recipeproject.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.HashSet;
 
 @Slf4j
 @Controller
@@ -18,10 +26,14 @@ public class RecipeController {
 
     private  RecipeService recipeService;
     private final RecipeCommandToRecipe recipeCommandToRecipe;
+    private final UnitOfMeasureRepository unitOfMeasureRepository;
+    private final CategoryRepository categoryRepository;
 
-    public RecipeController(RecipeService recipeService, RecipeCommandToRecipe recipeCommandToRecipe) {
+    public RecipeController(RecipeService recipeService, RecipeCommandToRecipe recipeCommandToRecipe, UnitOfMeasureRepository unitOfMeasureRepository, CategoryRepository categoryRepository) {
         this.recipeService = recipeService;
         this.recipeCommandToRecipe = recipeCommandToRecipe;
+        this.unitOfMeasureRepository = unitOfMeasureRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @RequestMapping("/recipes")
@@ -59,6 +71,17 @@ public class RecipeController {
 
     @PostMapping("/newRecipe")
     public String postNewRecipe(@ModelAttribute("recipeCommand") RecipeCommand recipeCommand){
+        IngredientCommand oregano = new IngredientCommand();
+        oregano.setDescription("dried oregano");
+        oregano.setAmount(BigDecimal.valueOf(1));
+        UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand = new UnitOfMeasureToUnitOfMeasureCommand();
+        oregano.setUnitOfMeasure(unitOfMeasureToUnitOfMeasureCommand.convert(unitOfMeasureRepository.findByDescription("Teaspoon")));
+
+        CategoryCommand categoryCommand = new CategoryCommand();
+        CategoryToCategoryCommand categoryToCategoryCommand = new CategoryToCategoryCommand();
+        recipeCommand.getIngredients().add(oregano);
+        recipeCommand.getCategories().add(categoryToCategoryCommand.convert(categoryRepository.findByDescription("Fast Food")));
+
         recipeService.saveRecipe(recipeCommandToRecipe.convert(recipeCommand));
 
         return "recipes/listOfRecipes";

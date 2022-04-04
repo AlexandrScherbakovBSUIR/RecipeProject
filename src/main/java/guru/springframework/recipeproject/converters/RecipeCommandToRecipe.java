@@ -9,6 +9,8 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
+
 @Component
 public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
     private final IngredientCommandToIngredient ingredientCommandToIngredient;
@@ -41,6 +43,10 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
             recipe.setUrl(source.getUrl());
             recipe.setRecipeNote(recipeNoteCommandToRecipeNote.convert(source.getRecipeNoteCommand()));
 
+            //todo:
+            recipe.setIngredients(new HashSet<>());
+            recipe.setCategories(new HashSet<>());
+
             if(source.getCategories()!=null && !source.getCategories().isEmpty()){
                 for (CategoryCommand categoryCommand:source.getCategories()) {
                     recipe.getCategories().add(categoryCommandToCategory.convert(categoryCommand));
@@ -52,7 +58,7 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
                     recipe.getIngredients().add(ingredientCommandToIngredient.convert(ingredientCommand));
                                     }
             }
-
+            return recipe;
         }
         return null;
     }
