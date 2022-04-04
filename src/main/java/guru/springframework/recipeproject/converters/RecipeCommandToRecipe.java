@@ -3,6 +3,7 @@ package guru.springframework.recipeproject.converters;
 import guru.springframework.recipeproject.commands.CategoryCommand;
 import guru.springframework.recipeproject.commands.IngredientCommand;
 import guru.springframework.recipeproject.commands.RecipeCommand;
+import guru.springframework.recipeproject.domain.Ingredient;
 import guru.springframework.recipeproject.domain.Recipe;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
@@ -10,6 +11,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
@@ -31,6 +33,7 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
     public Recipe convert(RecipeCommand source) {
         if(source!=null){
             Recipe recipe = new Recipe();
+            Set<Ingredient> ingredients= new HashSet<Ingredient>();
 
             recipe.setId(source.getId());
             recipe.setCookTime(source.getCookTime());
@@ -55,9 +58,10 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
 
             if(source.getIngredients()!=null && !source.getIngredients().isEmpty()){
                 for (IngredientCommand ingredientCommand: source.getIngredients()) {
-                    recipe.getIngredients().add(ingredientCommandToIngredient.convert(ingredientCommand));
-                                    }
+                    ingredients.add(ingredientCommandToIngredient.convert(ingredientCommand));
+                }
             }
+            recipe.setIngredients(ingredients);
             return recipe;
         }
         return null;

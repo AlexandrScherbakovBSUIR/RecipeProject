@@ -51,6 +51,9 @@ public class Recipe {
 
         }
     }
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
 
 
     public Long getId() {
@@ -145,9 +148,7 @@ public class Recipe {
         this.image = image;
     }
 
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
+
 
     public String toString() {
         return "Recipe(id=" + this.getId() + ", description=" + this.getDescription() + ", prepTime=" + this.getPrepTime() + ", cookTime=" + this.getCookTime() + ", serving=" + this.getServing() + ", source=" + this.getSource() + ", url=" + this.getUrl() + ", directions=" + this.getDirections() + ", difficulty=" + this.getDifficulty() + ", image=" + java.util.Arrays.deepToString(this.getImage()) + ", recipeNote=" + this.getRecipeNote() + ", ingredients=" + this.getIngredients() + ", categories=" + this.getCategories() + ")";
