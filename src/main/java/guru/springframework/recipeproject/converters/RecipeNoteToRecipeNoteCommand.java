@@ -17,7 +17,7 @@ public class RecipeNoteToRecipeNoteCommand implements Converter<RecipeNote, Reci
         if(source!=null){
             RecipeNoteCommand recipeNoteCommand = new RecipeNoteCommand();
             recipeNoteCommand.setId(source.getId());
-            recipeNoteCommand.setRecipeNote(source.getRecipeNote());
+            recipeNoteCommand.setRecipeNoteCommand(source.getRecipeNote());
             return recipeNoteCommand;
 
         }

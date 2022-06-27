@@ -2,7 +2,7 @@ package guru.springframework.recipeproject.commands;
 
 public class RecipeNoteCommand {
     private Long id;
-    private String recipeNote;
+    private String recipeNoteCommand;
 
     public RecipeNoteCommand() {
     }
@@ -15,11 +15,11 @@ public class RecipeNoteCommand {
         this.id = id;
     }
 
-    public String getRecipeNote() {
-        return recipeNote;
+    public String getRecipeNoteCommand() {
+        return recipeNoteCommand;
     }
 
-    public void setRecipeNote(String recipeNote) {
-        this.recipeNote = recipeNote;
+    public void setRecipeNoteCommand(String recipeNoteCommand) {
+        this.recipeNoteCommand = recipeNoteCommand;
     }
 }
