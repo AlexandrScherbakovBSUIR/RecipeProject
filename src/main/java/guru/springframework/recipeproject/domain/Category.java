@@ -1,17 +1,8 @@
 package guru.springframework.recipeproject.domain;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.util.Set;
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
 @Entity
 public class Category {
 
@@ -23,28 +14,34 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
 
+    public Category() {
+    }
 
-/*    public Long getId() {
-        return id;
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public Set<Recipe> getRecipes() {
+        return this.recipes;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public Set<Recipe> getRecipes() {
-        return recipes;
-    }
-
     public void setRecipes(Set<Recipe> recipes) {
         this.recipes = recipes;
-    }*/
+    }
+
+    public String toString() {
+        return "Category(id=" + this.getId() + ", description=" + this.getDescription() + ", recipes=" + this.getRecipes() + ")";
+    }
 }

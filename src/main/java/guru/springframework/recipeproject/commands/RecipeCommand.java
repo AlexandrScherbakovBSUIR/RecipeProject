@@ -16,8 +16,8 @@ public class RecipeCommand {
     private String directions;
     private Difficulty difficulty;
     private RecipeNoteCommand recipeNoteCommand;
-    private Set<IngredientCommand> ingredients = new HashSet<>();
-    private Set<CategoryCommand> categories = new HashSet<>();
+    private Set<IngredientCommand> ingredientCommands = new HashSet<>();
+    private Set<CategoryCommand> categoryCommands = new HashSet<>();
 
     public RecipeCommand() {
     }
@@ -102,19 +102,19 @@ public class RecipeCommand {
         this.recipeNoteCommand = recipeNoteCommand;
     }
 
-    public Set<IngredientCommand> getIngredients() {
-        return ingredients;
+    public Set<IngredientCommand> getIngredientCommands() {
+        return ingredientCommands;
     }
 
-    public void setIngredients(Set<IngredientCommand> ingredients) {
-        this.ingredients = ingredients;
+    public void setIngredientCommands(Set<IngredientCommand> ingredientCommands) {
+        this.ingredientCommands = ingredientCommands;
     }
 
-    public Set<CategoryCommand> getCategories() {
-        return categories;
+    public Set<CategoryCommand> getCategoryCommands() {
+        return categoryCommands;
     }
 
-    public void setCategories(Set<CategoryCommand> categories) {
-        this.categories = categories;
+    public void setCategoryCommands(Set<CategoryCommand> categoryCommands) {
+        this.categoryCommands = categoryCommands;
     }
 }

@@ -43,14 +43,14 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
 
             if(source.getCategories()!=null && !source.getCategories().isEmpty()){
                 for (Category category: source.getCategories() ) {
-                    recipeCommand.getCategories().add(categoryToCategoryCommand.convert(category));
+                    recipeCommand.getCategoryCommands().add(categoryToCategoryCommand.convert(category));
 
                 }
             }
 
             if(source.getIngredients()!=null && !source.getIngredients().isEmpty()){
                 for (Ingredient ingredient: source.getIngredients()) {
-                    recipeCommand.getIngredients().add(ingredientToIngredientCommand.convert(ingredient));
+                    recipeCommand.getIngredientCommands().add(ingredientToIngredientCommand.convert(ingredient));
                 }
             }
             return recipeCommand;
