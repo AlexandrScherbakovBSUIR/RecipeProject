@@ -20,6 +20,9 @@ public class RecipeNote {
     }
 
     public Long getId() {
+        if (this.id==null){
+            return 666L;
+        }
         return this.id;
     }
 

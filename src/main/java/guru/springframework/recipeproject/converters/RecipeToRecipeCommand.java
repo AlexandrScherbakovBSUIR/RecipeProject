@@ -1,5 +1,6 @@
 package guru.springframework.recipeproject.converters;
 
+import guru.springframework.recipeproject.commands.CategoryCommand;
 import guru.springframework.recipeproject.commands.RecipeCommand;
 import guru.springframework.recipeproject.domain.Category;
 import guru.springframework.recipeproject.domain.Ingredient;
@@ -42,10 +43,8 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
             recipeCommand.setRecipeNoteCommand(recipeNoteToRecipeNoteCommand.convert(source.getRecipeNote()));
 
             if(source.getCategories()!=null && !source.getCategories().isEmpty()){
-                for (Category category: source.getCategories() ) {
-                    recipeCommand.getCategoryCommands().add(categoryToCategoryCommand.convert(category));
+                recipeCommand.setCategoryCommands((CategoryCommand[]) source.getCategories().toArray());
 
-                }
             }
 
             if(source.getIngredients()!=null && !source.getIngredients().isEmpty()){

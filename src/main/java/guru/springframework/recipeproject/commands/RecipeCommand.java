@@ -2,7 +2,9 @@ package guru.springframework.recipeproject.commands;
 
 import guru.springframework.recipeproject.domain.Difficulty;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class RecipeCommand {
@@ -17,8 +19,8 @@ public class RecipeCommand {
     private Difficulty difficulty;
     private RecipeNoteCommand recipeNoteCommand;
     private Set<IngredientCommand> ingredientCommands = new HashSet<>();
-    private Set<CategoryCommand> categoryCommands = new HashSet<>();
-
+   // private List<CategoryCommand> categoryCommands = new ArrayList<>();
+    private CategoryCommand[] categoryCommands;
     public RecipeCommand() {
     }
 
@@ -110,11 +112,19 @@ public class RecipeCommand {
         this.ingredientCommands = ingredientCommands;
     }
 
-    public Set<CategoryCommand> getCategoryCommands() {
+/*    public List<CategoryCommand> getCategoryCommands() {
         return categoryCommands;
     }
 
-    public void setCategoryCommands(Set<CategoryCommand> categoryCommands) {
+    public void setCategoryCommands(List<CategoryCommand> categoryCommands) {
+        this.categoryCommands = categoryCommands;
+    }*/
+
+    public CategoryCommand[] getCategoryCommands() {
+        return categoryCommands;
+    }
+
+    public void setCategoryCommands(CategoryCommand[] categoryCommands) {
         this.categoryCommands = categoryCommands;
     }
 }

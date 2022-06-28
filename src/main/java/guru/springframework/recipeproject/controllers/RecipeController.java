@@ -8,6 +8,8 @@ import guru.springframework.recipeproject.converters.RecipeCommandToRecipe;
 import guru.springframework.recipeproject.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import guru.springframework.recipeproject.domain.Category;
 import guru.springframework.recipeproject.domain.Difficulty;
+import guru.springframework.recipeproject.domain.Ingredient;
+import guru.springframework.recipeproject.domain.Recipe;
 import guru.springframework.recipeproject.repositories.CategoryRepository;
 import guru.springframework.recipeproject.repositories.UnitOfMeasureRepository;
 import guru.springframework.recipeproject.services.RecipeService;
@@ -24,7 +26,7 @@ import java.util.Set;
 @Slf4j
 @Controller
 public class RecipeController {
-    //TODO: add some debug loggins
+    //TODO: add some debug logins
 
 
     private  RecipeService recipeService;
@@ -63,8 +65,8 @@ public class RecipeController {
         return "recipes/recipe";
     }
 
-    @GetMapping("/newRecipe")
-    public String getNewRecipeForm(Model model){
+    @GetMapping("/newRecipeCommand")
+    public String getNewRecipeCommandForm(Model model){
         RecipeCommand recipeCommand = new RecipeCommand();
         model.addAttribute("recipeCommand",recipeCommand);
         model.addAttribute("listOfDifficulty",Difficulty.values());
@@ -72,11 +74,11 @@ public class RecipeController {
         model.addAttribute("listOfCategories",
                 convertCategorySetToCategoryCommandSet((List<Category>) categoryRepository.findAll()));
 
-        return "recipes/newRecipe";
+        return "recipes/newRecipeCommand";
     }
 
-    @PostMapping("/newRecipe")
-    public String postNewRecipe(@ModelAttribute("recipeCommand") RecipeCommand recipeCommand, Model model){
+    @PostMapping("/newRecipeCommand")
+    public String postNewRecipeCommand(@ModelAttribute("recipeCommand") RecipeCommand recipeCommand, Model model){
 
         UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand = new UnitOfMeasureToUnitOfMeasureCommand();
 
@@ -89,17 +91,56 @@ public class RecipeController {
         CategoryToCategoryCommand categoryToCategoryCommand = new CategoryToCategoryCommand();
 
         recipeCommand.setIngredientCommands(Set.of(oregano));
-        recipeCommand.getCategoryCommands().add(categoryToCategoryCommand.convert(categoryRepository.findByDescription("Fast Food")));
+        //recipeCommand.getCategoryCommands().add(categoryToCategoryCommand.convert(categoryRepository.findByDescription("Fast Food")));
 
         recipeService.saveRecipe(recipeCommandToRecipe.convert(recipeCommand));
+
+        //todo: seems right Spring MVC, Thymeleaf and Spring Data JPA setups can help with save CategoryCommand as object
+        //todo: https://www.codejava.net/frameworks/spring-boot/spring-thymeleaf-form-multi-checkboxes-mapping-with-collection-example
 
         //todo: call other method
         model.addAttribute("recipes",recipeService.findAllRecipes());
         return "recipes/listOfRecipes";
 
     }
+    //for recipe object
+    @GetMapping("/newRecipe")
+    public String getNewRecipeForm(Model model){
+        Recipe recipe = new Recipe();
+        model.addAttribute("recipe",recipe);
+        model.addAttribute("listOfDifficulty",Difficulty.values());
+        ;
+        model.addAttribute("listOfCategories",
+                (List<Category>) categoryRepository.findAll());
 
-    public List<CategoryCommand> convertCategorySetToCategoryCommandSet(List<Category> categories){
+        return "recipes/newRecipe";
+    }
+
+    @PostMapping("/newRecipe")
+    public String postNewRecipe(@ModelAttribute("recipe") Recipe recipe, Model model){
+
+        //UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand = new UnitOfMeasureToUnitOfMeasureCommand();
+
+        Ingredient oregano = new Ingredient();
+        oregano.setDescription("dried oregano");
+        oregano.setAmount(BigDecimal.valueOf(1));
+        oregano.setUnitOfMeasure(unitOfMeasureRepository.findByDescription("Teaspoon"));
+
+        Category category = new Category();
+        //CategoryToCategoryCommand categoryToCategoryCommand = new CategoryToCategoryCommand();
+
+        recipe.setIngredients(Set.of(oregano));
+        //recipeCommand.getCategoryCommands().add(categoryToCategoryCommand.convert(categoryRepository.findByDescription("Fast Food")));
+
+        recipeService.saveRecipe(recipe);
+
+       //todo: call other method
+        model.addAttribute("recipes",recipeService.findAllRecipes());
+        return "recipes/listOfRecipes";
+
+    }
+
+    private List<CategoryCommand> convertCategorySetToCategoryCommandSet(List<Category> categories){
         List<CategoryCommand> categoryCommands = new ArrayList<CategoryCommand>();
         CategoryToCategoryCommand categoryToCategoryCommand = new CategoryToCategoryCommand();
 

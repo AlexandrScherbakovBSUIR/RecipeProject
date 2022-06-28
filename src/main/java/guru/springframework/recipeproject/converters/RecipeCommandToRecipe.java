@@ -50,7 +50,7 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
             recipe.setIngredients(new HashSet<>());
             recipe.setCategories(new HashSet<>());
 
-            if(source.getCategoryCommands()!=null && !source.getCategoryCommands().isEmpty()){
+            if(source.getCategoryCommands()!=null && source.getCategoryCommands().length> 0){
                 for (CategoryCommand categoryCommand:source.getCategoryCommands()) {
                     recipe.getCategories().add(categoryCommandToCategory.convert(categoryCommand));
                 }
