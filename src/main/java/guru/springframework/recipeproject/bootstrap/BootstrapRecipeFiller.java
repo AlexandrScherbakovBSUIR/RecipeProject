@@ -153,7 +153,6 @@ public class BootstrapRecipeFiller implements CommandLineRunner {
         guacamole.setServing(4);
         guacamole.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
         guacamole.setRecipeNote(recipeNoteForGuacamole);
-        //guacamole.setCategories(new HashSet<>());
         guacamole.getCategories().add(categoryRepository.findByDescription("Mexican"));
 
 
@@ -171,7 +170,6 @@ public class BootstrapRecipeFiller implements CommandLineRunner {
         tacos.setDifficulty(Difficulty.MODERATE);
         tacos.setServing(6);
         tacos.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
-        //tacos.setCategories(new HashSet<>());
         tacos.getCategories().add(categoryRepository.findByDescription("Mexican"));
         tacos.getCategories().add(categoryRepository.findByDescription("Fast Food"));
         tacos.setRecipeNote(recipeNoteForTacos);
