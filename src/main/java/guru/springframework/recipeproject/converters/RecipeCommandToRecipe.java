@@ -1,10 +1,10 @@
 package guru.springframework.recipeproject.converters;
 
-import guru.springframework.recipeproject.commands.CategoryCommand;
 import guru.springframework.recipeproject.commands.IngredientCommand;
 import guru.springframework.recipeproject.commands.RecipeCommand;
 import guru.springframework.recipeproject.domain.Ingredient;
 import guru.springframework.recipeproject.domain.Recipe;
+import guru.springframework.recipeproject.repositories.CategoryRepository;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
@@ -18,13 +18,14 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
     private final IngredientCommandToIngredient ingredientCommandToIngredient;
     private final CategoryCommandToCategory categoryCommandToCategory;
     private final RecipeNoteCommandToRecipeNote recipeNoteCommandToRecipeNote;
-
+    private final CategoryRepository categoryRepository;
     public RecipeCommandToRecipe(IngredientCommandToIngredient ingredientCommandToIngredient,
                                  CategoryCommandToCategory categoryCommandToCategory,
-                                 RecipeNoteCommandToRecipeNote recipeNoteCommandToRecipeNote) {
+                                 RecipeNoteCommandToRecipeNote recipeNoteCommandToRecipeNote, CategoryRepository categoryRepository) {
         this.ingredientCommandToIngredient = ingredientCommandToIngredient;
         this.categoryCommandToCategory = categoryCommandToCategory;
         this.recipeNoteCommandToRecipeNote = recipeNoteCommandToRecipeNote;
+        this.categoryRepository = categoryRepository;
     }
 
     @Synchronized
@@ -51,8 +52,9 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand,Recipe> {
             recipe.setCategories(new HashSet<>());
 
             if(source.getCategoryCommands()!=null && source.getCategoryCommands().length> 0){
-                for (CategoryCommand categoryCommand:source.getCategoryCommands()) {
-                    recipe.getCategories().add(categoryCommandToCategory.convert(categoryCommand));
+                for (String categoryCommand:source.getCategoryCommands()) {
+
+                    recipe.getCategories().add(categoryRepository.findByDescription(categoryCommand));
                 }
             }
 

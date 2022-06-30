@@ -22,7 +22,7 @@
                     <h1 class="panel-title" text="Create recipe form"></h1>
                 </div>
                 <div class="panel-body">
-                    <form action="#" th:action="@{/newRecipe}" method="post" th:object="${recipeCommand}">
+                    <form action="#" th:action="@{/newRecipeCommand}" method="post" th:object="${recipeCommand}">
                         <div class="form-group">
                             <label for="description">Recipe description</label>
                             <input type="text" class="form-control" id="description" name="description"   th:value="MagicDescription"  placeholder="Description"> <!--th:field="*{description}"-->
@@ -57,7 +57,7 @@
                         <div class="form-group" style="margin-top: 20px">
                             <label for="categoryCommands">Category</label>
                             <select multiple id="categoryCommands" th:field="*{categoryCommands}" > <!--th:field="*{categories}"--> <!--multiple-->
-                                <option th:each="p : ${listOfCategories}" th:field="${}"th:value="${p.description}" th:text="${p.description}"  />
+                                <option th:each="p : ${listOfCategories}" th:value="${p.description}" th:text="${p.description}"  />
                             </select>
                         </div>
                         <div class="form-group">

@@ -18,7 +18,7 @@ public class RecipeCommand {
     private RecipeNoteCommand recipeNoteCommand;
     private Set<IngredientCommand> ingredientCommands = new HashSet<>();
    // private List<CategoryCommand> categoryCommands = new ArrayList<>();
-    private CategoryCommand[] categoryCommands;
+    private String[] categoryCommands;
     public RecipeCommand() {
     }
 
@@ -118,11 +118,11 @@ public class RecipeCommand {
         this.categoryCommands = categoryCommands;
     }*/
 
-    public CategoryCommand[] getCategoryCommands() {
+    public String[] getCategoryCommands() {
         return categoryCommands;
     }
 
-    public void setCategoryCommands(CategoryCommand[] categoryCommands) {
+    public void setCategoryCommands(String[] categoryCommands) {
         this.categoryCommands = categoryCommands;
     }
 }
