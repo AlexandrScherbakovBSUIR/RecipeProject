@@ -140,6 +140,37 @@ public class RecipeController {
 
     }
 
+    //for recipe object
+    /*view*/
+/*    @RequestMapping("/recipe/{id}")
+    public String getConcreteRecipeByPathVariable(@PathVariable String id, Model model){
+
+        model.addAttribute("recipe",recipeService.findById(Long.valueOf(id)));
+
+        return "recipes/recipe";
+    }*/
+
+    @RequestMapping("/recipe/update/{id}")
+    public String getUpdateRecipeForm(@PathVariable String id, Model model){
+
+        model.addAttribute("recipe",recipeService.findById(Long.valueOf(id)));
+
+        return "recipes/updateRecipe";
+    }
+
+    @PostMapping("/updateRecipe")
+    public String postUpdateRecipe(@ModelAttribute("recipe") Recipe recipe, Model model){
+
+
+
+
+        recipeService.saveRecipe(recipe);
+
+        model.addAttribute("recipe",recipeService.findById(Long.valueOf(recipe.getId())));
+
+        return "recipes/recipe";
+
+    }
     private List<CategoryCommand> convertCategorySetToCategoryCommandSet(List<Category> categories){
         List<CategoryCommand> categoryCommands = new ArrayList<CategoryCommand>();
         CategoryToCategoryCommand categoryToCategoryCommand = new CategoryToCategoryCommand();

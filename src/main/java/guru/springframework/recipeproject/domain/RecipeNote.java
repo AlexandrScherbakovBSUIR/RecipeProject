@@ -47,6 +47,6 @@ public class RecipeNote {
     }
 
     public String toString() {
-        return "RecipeNote(id=" + this.getId() + ", recipe=" + this.getRecipe() + ", recipeNote=" + this.getRecipeNote() + ")";
+        return "RecipeNote(id=" + this.getId() + ", recipeId=" + this.getRecipe().getId() + ", recipeNote=" + this.getRecipeNote() + ")";
     }
 }

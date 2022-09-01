@@ -32,6 +32,8 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Link</th>
+                                    <th>View</th>
+                                    <th>Update</th>
                                 </tr>
                                 <tr th:each="recipe:${recipes}">
                                     <td> <a th:href="@{/recipe(id=${recipe.id})}">[[${recipe.id}]]</a></td>
@@ -39,6 +41,7 @@
                                     <td th:text="${recipe.url}"></td>
                                     <td @thymeleaf id="recipe" type="guru.springframework.recipeproject.domain.Recipe">
                                     <td><a  th:href="@{'/recipe/'+${recipe.id}}">view</a></td>
+                                    <td><a  th:href="@{'/recipe/update/'+${recipe.id}}">update</a></td>
                                 </tr>
                             </table>
                         </div>

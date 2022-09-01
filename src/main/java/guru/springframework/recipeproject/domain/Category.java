@@ -42,6 +42,6 @@ public class Category {
     }
 
     public String toString() {
-        return "Category(id=" + this.getId() + ", description=" + this.getDescription() + ", recipes=" + this.getRecipes() + ")";
+        return "Category(id=" + this.getId() + ", description=" + this.getDescription()+")";
     }
 }

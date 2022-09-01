@@ -62,6 +62,6 @@ public class Ingredient {
     }
 
     public String toString() {
-        return "Ingredient(id=" + this.getId() + ", description=" + this.getDescription() + ", amount=" + this.getAmount() + ", recipe=" + this.getRecipe() + ", unitOfMeasure=" + this.getUnitOfMeasure() + ")";
+        return "Ingredient(id=" + this.getId() + ", description=" + this.getDescription() + ", amount=" + this.getAmount() + ", recipeId=" + this.getRecipe().getId() + ", unitOfMeasure=" + this.getUnitOfMeasure() + ")";
     }
 }
