@@ -9,6 +9,9 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" >
+    <link rel="stylesheet" type="text/css" th:href="@{/css/modalWindow/hystmodal.min.css}">
+
+    <script th:src="@{/js/modalWindow/hystmodal.min.js}"></script>
     <meta charset="UTF-8">
     <title>Create recipe</title>
 </head>
@@ -60,6 +63,8 @@
                                 <option th:each="category : ${recipe.categories}" th:value="${category.id}" th:text="${category.description}"  />
                             </select>
                         </div>
+                        <a href="#" data-hystmodal="#myModal">Показать окно с id=myModal</a>
+                        <script> const myModal = new HystModal({ linkAttributeName: "data-hystmodal",});</script>
                         <div class="form-group">
                             <label for="url">Url</label>
                             <input type="url" class="form-control" id="url" th:field="*{url}"> <!--th:field="*{url}"-->
@@ -85,5 +90,29 @@
     </div>
 </div>
 
+<div class="hystmodal" id="myModal" aria-hidden="true">
+    <div class="hystmodal__wrap">
+        <div class="hystmodal__window" role="dialog" aria-modal="true">
+            <button data-hystclose class="hystmodal__close">Закрыть</button>
+            <!-- Ваш HTML код модального окна -->
+            <div class="panel-heading" >
+                <h1 class="panel-title" text="Create ingredient form"></h1>
+            </div>
+            <div class="panel-body">
+                <form action="#"  >
+                    <div class="form-group">
+                        <label for="IngredientDescription">Recipe description</label>
+                        <input type="text" class="form-control" id="IngredientDescription" > <!--th:field="*{description}"-->
+                        <small id="IngredientDescriptionHelp" class="form-text text-muted">input the description</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Preparing time</label>
+                        <input type="number" class="form-control" id="amount" > <!--th:field="*{prepTime}"-->
+                        <small id="amountHelp" class="form-text text-muted">input preparation time</small>
+                    </div>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>
